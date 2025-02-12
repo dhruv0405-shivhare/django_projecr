@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} index {% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock %}
+
+{% block content %}
+<h1 style="text-align: center; margin-top: 5px;">Login Form</h1>
+<div class="container">
+    <div class="row">
+        <div style="columns: md -12px;">
+            <div class="card" style="background-color: lightgrey;">
+                <div class="card-body">
+                    <form action="{% url 'login' %}" method="post" enctype="multipart/form-data">
+                        
+                        {% csrf_token %}
+
+                            <label for="email">Email</label>
+                        <input type="text" name="email" class="form-control" placeholder="Enter Your Email">
+                        <div style="columns: md --3px;">
+                            <label for="password">Password</label>
+                        <textarea name="password" name="password" class="form-control" placeholder="Enter Your Password"></textarea>
+                        </div>
+
+                        <div class="container" style="text-align: center; margin-top: 12px;">
+                            <button class="btn btn-primary">
+                                Login
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

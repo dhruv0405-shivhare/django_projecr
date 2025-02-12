@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} index {% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock %}
+
+{% block content %}
+<h1 style="text-align: center; margin-top: 5px;">Registration Form</h1>
+<div class="container">
+    <div class="row">
+        <div style="columns: md -12px;">
+            <div class="card" style="background-color: lightgrey;">
+                <div class="card-body">
+                    <form action="{% url 'registration' %}" method="post" enctype="multipart/form-data">
+                        
+                        {% csrf_token %}
+
+                        <div style="columns: md --3px;">
+                            <label for="name">Name</label>
+                        <input type="text" name="name" class="form-control" placeholder="Enter Your Name">
+                        </div>
+                        <div style="columns: md --3px;">
+                            <label for="email">Email</label>
+                        <input type="text" name="email" class="form-control" placeholder="Enter Your Email">
+                        <div style="columns: md --3px;">
+                            <label for="contact">Contact</label>
+                        <input type="text" name="contact" class="form-control" placeholder="Enter Your Contact">
+                        <div style="columns: md --3px;">
+                            <label for="password">Password</label>
+                        <input name="password" name="password" class="form-control" placeholder="Enter Your Password"></input>
+                        </div>
+                        <div style="columns: md --3px;">
+                            <label for="cpassword">Confirm Password</label>
+                        <input name="cpassword" name="cpassword" class="form-control" placeholder="Enter Your Confirm Password"></input>
+                        </div>
+                        <div class="container" style="text-align: center; margin-top: 12px;">
+                            <button class="btn btn-primary">
+                                Register Now
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
