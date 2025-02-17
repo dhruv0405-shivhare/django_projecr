@@ -1,20 +1,20 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %} index {% endblock %}
+{% block title %} student_login {% endblock %}
 
 {% block css %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 {% endblock %}
 
 {% block content %}
-<h1 style="text-align: center; margin-top: 5px;">Admin Login </h1>
+<h1 style="text-align: center; margin-top: 5px;">Student Login </h1>
 <div class="container">
     <div class="row">
         <div style="columns: md -12px;">
             <div class="card" style="background-color: lightgrey;">
                 <div class="card-body">
-                    <form action="{% url 'login' %}" method="post" enctype="multipart/form-data">
+                    <form action="{% url 'student_login' %}" method="post" enctype="multipart/form-data">
                         
                         {% csrf_token %}
 
@@ -28,11 +28,6 @@
                         <div class="container" style="text-align: center; margin-top: 12px;">
                             <button class="btn btn-primary " type="submit">
                                 Login
-                            </button>
-                        </div>
-                        <div class="container" style="text-align: center; margin-top: 12px;">
-                            <button class="btn btn-primary " style="text-decoration: none; color: white;" type="submit">
-                                <a href="{% url 'student_login' %} " style="text-decoration: none; color: white;">Student Login</a>
                             </button>
                         </div>
                     </form>

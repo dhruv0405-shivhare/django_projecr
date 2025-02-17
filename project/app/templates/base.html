@@ -10,7 +10,7 @@
 }
 
 .footer-container {
-    max-width: 1200px;
+    max-width: 100%;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
@@ -112,14 +112,17 @@ footer a:hover {
             <a class="navbar-brand" href="{% url 'index' %}">Dhruv</a>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{% url 'dashboard' %}">Admin Dashboard</a>
+                <a class="nav-link active" aria-current="page" href="">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Student Dashboard</a>
+                <a class="nav-link" href="#">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="">Contact</a>
               </li>
 
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{% url 'login' %}">Login</a>
+                <a class="nav-link active" aria-current="page" href="{% url 'login' %}"> Login</a>
               </li>
             </ul>
             <form class="d-flex">
@@ -132,12 +135,13 @@ footer a:hover {
       {% block content %}
          
       {% endblock %}
+
           <footer>
-            <div class="footer-container">
+            <div class="footer-container" style="margin-bottom: 10px;">
                 
                 <div class="contact-info">
                     <h4>Contact Us</h4>
-                   <p>Email: <a href="contact@gamezone.com">contact@gamezone.com</a></p>
+                   <p>Email: <a href="university@gmail.com">university@gmail.com</a></p>
                     <p>Phone: +91-9876543210</p>
                     <p>Address: Bhopal, MadhyaPradesh</p>
                 </div>
@@ -169,7 +173,7 @@ footer a:hover {
             </div>
         
             <div class="footer-copyright">
-                <p>&copy; 2024 Game Zone. All Rights Reserved.</p>
+                <p>&copy; 2024 University. All Rights Reserved.</p>
                 <p>By Dhruv</p>
             </div>
         </footer>

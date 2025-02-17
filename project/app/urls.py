@@ -9,5 +9,10 @@ urlpatterns = [
     path('edit/<int:pk>',views.edit,name='edit'),
     path('updatedat/<int:pk>',views.updatedat,name='updatedat'),
     path('login/',views.login,name='login'),
+    path('student_list/',views.student_list,name='student_list'),
+    path('student_login/',views.student_login,name='student_login'),
+    path('student_dashboard/',views.student_dashboard,name='student_dashboard'),
+    path('query_list/',views.query_list,name='query_list'),
+    path('logout/',views.logout,name='logout'),
     
 ]

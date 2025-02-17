@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from .models import Student
 from .models import Login
+from .models import Query
+
+
 def index(request):
     return render(request,'index.html')
 
@@ -62,30 +65,71 @@ def login(request):
     if request.method=='POST':
         email=request.POST.get('email')
         password=request.POST.get('password')
-        user=Login.objects.filter(admin_email=email)
-        if user:
-            data1=Login.objects.get(admin_email=email)
-            user_data={
-                'name':data1.admin_name,
-                'email':data1.admin_email,
-                'passowrd':data1.admin_password,
-
-            }
-            print(user_data)
-            pass1= data1.admin_password
-            if pass1 == password:
-                return render(request,'dashboard.html',{'data':user_data})
-            else:
-                msg = "Enter Password not Match"
-                return render(request,'login.html',{'msg':msg})
+        if email=="dshivhare661@gmail.com" and password=='12345':
+            return render(request,'dashboard.html')
         else:
-            msg = "Email not Exist"
-            return render(request,'login.html',{'msg':msg})    
-            
+            data=Login.objects.filter(admin_email=email)
+            if(data):
+                user=Login.objects.get(admin_email=email)
+                print(user)
+                mypass=user.admin_email
+                if(mypass==password):
+                    return render(request,'dashboard.html')
+                else:        
+                    return render (request,'login.html')
     else:
-        return render(request,'login.html')
-        
+        return render (request,'login.html')
+    
+def student_list(request):
+    students = Student.objects.all()
 
+    return render(request, 'student_list.html', {'data': students})
+    
+def student_login(request):
+        if request.method=='POST':
+            email=request.POST.get('email')
+            password=request.POST.get('password')
+            user=Student.objects.filter(stu_email=email)
+            if user:
+                data=Student.objects.get(stu_email=email)
+                user_data={
+                    'enrollment':data.stu_enrollment,
+                    'name':data.stu_name,
+                    'email':data.stu_email,
+                    'contact':data.stu_contact,
+                    'address':data.stu_address,
+                    'password':data.stu_password
+                }
+                print(user_data)
+                pass1=data.stu_password
+                if pass1==password:
+                    return render(request,'student_dashboard.html')
+                else:
+                    msg="Enter password not match"
+                    return render(request,'student_login.html',{'msg':msg})
+            else:
+                msg = "Email does not Exit"
+                return render(request,'student_login.html',{'msg':msg})
+        else:
+             return render(request,'student_login.html')
+    
+def student_dashboard(request):
+    if request.method=='POST':
+       name=request.POST.get('name')
+       enrollment=request.POST.get('enrollment')
+       email=request.POST.get('email')
+       contact=request.POST.get('contact')
+       query=request.POST.get('query')
+       Query.objects.create(name=name,enrollment=enrollment,email=email,contact=contact,query=query)
+       query=Query.objects.all()
+    return render(request,'query_list.html',{'data3':query})  
 
+def query_list(request):
+    query = Query.objects.all()
+
+    return render(request, 'query_list.html', {'data3': query})  
+
+def logout(request):
+    return render(request,'student_login.html')
 
        

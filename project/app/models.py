@@ -18,3 +18,10 @@ class Login(models.Model):
     admin_email=models.CharField(max_length=50)
     admin_password=models.CharField(max_length=50)
    
+
+class Query(models.Model):
+    name=models.CharField(max_length=50)
+    enrollment=models.CharField(max_length=50)
+    email=models.EmailField()
+    contact=models.IntegerField()
+    query=models.CharField(max_length=50)   
