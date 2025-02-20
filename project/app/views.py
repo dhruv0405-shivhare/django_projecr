@@ -130,6 +130,35 @@ def query_list(request):
     return render(request, 'query_list.html', {'data3': query})  
 
 def logout(request):
-    return render(request,'student_login.html')
+    
+    return render(request,'index.html')
+
+
+
+def delete1(request,pk1):
+    data3 = Query.objects.get(id=pk1)
+    data3.delete()
+    query = Query.objects.all()
+    return render(request, 'student_dashboard.html',{'data3':query})
+
+def edit1(request,pk1):
+    data3= Query.objects.get(id=pk1)
+    query=Query.objects.all()
+    return render(request, 'student_dashboard.html',{'data3':query,'data3':data3})
+
+def updatedat1(request,pk1):
+    if request.method=="POST":
+        x = Query.objects.get(id=pk1)
+        p = request.POST.get('name')
+        q = request.POST.get('email')
+        r = request.POST.get('city')
+        s = request.POST.get('contact')
+        x.stu_city = r
+        x.stu_contact = s
+        x.stu_email = q
+        x.stu_name = p
+        x.save()
+        query=Query.objects.all()
+        return render(request, 'student_dashboard.html',{'data3':query})
 
        

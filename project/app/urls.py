@@ -14,5 +14,8 @@ urlpatterns = [
     path('student_dashboard/',views.student_dashboard,name='student_dashboard'),
     path('query_list/',views.query_list,name='query_list'),
     path('logout/',views.logout,name='logout'),
+    path('delete1/<int:pk1>',views.delete1,name='delete1'),
+    path('edit1/<int:pk1>',views.edit1,name='edit1'),
+    path('updatedat1/<int:pk1>',views.updatedat1,name='updatedat1'),
     
 ]
